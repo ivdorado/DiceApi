@@ -18,12 +18,12 @@ class Json implements DiceRenderer
                     "ssml"=> "<speak>SSML text string to speak</speak>",
                     "playBehavior"=> "REPLACE_ENQUEUED"      
                 ],
-                [
+                
                     "card"=> [
                     "type"=> "Simple",
                     "title"=> "Horoscope",
                     "content"=> "Today will provide you a new learning opportunity.  Stick with it and the possibilities will be endless."
-                  ]]
+                  ]
             ]
         ];
         return json_encode($data);
