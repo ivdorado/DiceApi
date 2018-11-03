@@ -14,9 +14,7 @@ class Json implements DiceRenderer
             "response" => [
                 "outputSpeech" => [
                     "type"=> "PlainText",
-                    "text"=> "Plain text string to speak",
-                    "ssml"=> "<speak>SSML text string to speak</speak>",
-                    "playBehavior"=> "REPLACE_ENQUEUED"      
+                    "text"=> "Plain text string to speak"      
                 ],
                 
                     "card"=> [
