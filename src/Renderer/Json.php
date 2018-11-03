@@ -10,9 +10,23 @@ class Json implements DiceRenderer
     public function renderDice(array $diceCollection)
     {
         $data = [
+            "version" => "string",
             "success" => true,
             "dice" => $this->diceAsAssocArrays($diceCollection),
-            "version" => "string"
+            "response" => [
+                "outputSpeech" => [
+                    "type"=> "PlainText",
+                    "text"=> "Plain text string to speak",
+                    "ssml"=> "<speak>SSML text string to speak</speak>",
+                    "playBehavior"=> "REPLACE_ENQUEUED"      
+                ],
+                [
+                    "card"=> [
+                    "type"=> "Simple",
+                    "title"=> "Horoscope",
+                    "content"=> "Today will provide you a new learning opportunity.  Stick with it and the possibilities will be endless."
+                  ]]
+            ]
         ];
         return json_encode($data);
     }
