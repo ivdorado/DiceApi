@@ -10,7 +10,7 @@ class Json implements DiceRenderer
     public function renderDice(array $diceCollection)
     {
         $data = [
-            "version" => "string",           
+            "version" => "1.0",           
             "response" => [
                 "outputSpeech" => [
                     "type"=> "PlainText",
