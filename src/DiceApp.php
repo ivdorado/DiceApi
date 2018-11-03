@@ -56,7 +56,7 @@ class DiceApp extends App
         $this->get("/", [$this, 'index']);
         $this->get("/dice-stats", [$this, 'diceStats']);
         $this->get(self::DICE_PATH_REGEX, [$diceRequestHandler, 'getDice']);
-
+        $this->post("/", [$this, 'index']);
         foreach ($this->diceRequestHandler->contentTypesForPaths() as $path => $contentType) {
             $this->addCustomRoute($path, $contentType);
         }
