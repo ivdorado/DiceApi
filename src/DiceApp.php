@@ -75,5 +75,15 @@ class DiceApp extends App
                 );
             }
         );
+        $this->post(
+            "/{$path}" . self::DICE_PATH_REGEX,
+            function (Request $request, $response, $args) use ($diceRequestHandler, $contentType) {
+                return $diceRequestHandler->getDice(
+                    $request->withHeader('accept', $contentType),
+                    $response,
+                    $args
+                );
+            }
+        );
     }
 }
