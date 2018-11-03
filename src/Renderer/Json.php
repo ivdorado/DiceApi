@@ -11,7 +11,8 @@ class Json implements DiceRenderer
     {
         $data = [
             "success" => true,
-            "dice" => $this->diceAsAssocArrays($diceCollection)
+            "dice" => $this->diceAsAssocArrays($diceCollection),
+            "version" => "string"
         ];
         return json_encode($data);
     }
