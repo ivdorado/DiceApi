@@ -7,7 +7,7 @@ use MeadSteve\DiceApi\RequestHandler\DiceRequestHandler;
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
-
+include('valid_request.php');
 class DiceApp extends App
 {
     private $diceCounter;
@@ -78,11 +78,17 @@ class DiceApp extends App
         $this->post(
             "/{$path}" . self::DICE_PATH_REGEX,
             function (Request $request, $response, $args) use ($diceRequestHandler, $contentType) {
-                return $diceRequestHandler->getDice(
-                    $request->withHeader('accept', $contentType),
-                    $response,
-                    $args
-                );
+                $valid = validate_request( $guid, $userid );
+                if ( $valid['success'] )  {
+                    return $diceRequestHandler->getDice(
+                        $request->withHeader('accept', $contentType),
+                        $response,
+                        $args
+                    );
+                } else {
+                    error_log( 'Request failed: ' . $valid['message'] );
+                    die();
+                }                
             }
         );
     }
